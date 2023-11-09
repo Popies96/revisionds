@@ -1,0 +1,17 @@
+<h1>liste des joueur</h1>
+<table border="2" >
+    <th>nom</th>
+    <th>equipe</th>
+    <th>Action</th>
+
+    {% for joueur in j %}
+    <tr>
+        <td>{{ joueur.nom | upper }}</td>
+        <td>{{ joueur.equipe }}</td>
+        <td><a href=" {{ path('detail',{'id':joueur.id}) }} ">detail_vote</a></td>
+    </tr>
+    {% endfor %}
+    <tr>
+        {{ form(f) }}
+    </tr>
+</table>
