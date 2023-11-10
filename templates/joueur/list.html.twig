@@ -1,17 +1,25 @@
+<head>
+    <title>exam</title>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+</head>
+<body>
 <h1>liste des joueur</h1>
-<table border="2" >
-    <th>nom</th>
-    <th>equipe</th>
-    <th>Action</th>
+<div class="tableau">
+<table border="2" aria-expanded="true">
+    <th colspan="3">nom</th>
+    <th colspan="3">equipe</th>
+    <th colspan="3">Action</th>
 
     {% for joueur in j %}
     <tr>
-        <td>{{ joueur.nom | upper }}</td>
-        <td>{{ joueur.equipe }}</td>
-        <td><a href=" {{ path('detail',{'id':joueur.id}) }} ">detail_vote</a></td>
+        <td colspan="3">{{ joueur.nom | upper }}</td>
+        <td colspan="3">{{ joueur.equipe }}</td>
+        <td colspan="3"><a href=" {{ path('detail',{'id':joueur.id}) }} ">detail_vote</a></td>
     </tr>
     {% endfor %}
-    <tr>
-        {{ form(f) }}
-    </tr>
 </table>
+</div>
+<div class="form">
+{{ form(f) }}
+</div>
+</body>
