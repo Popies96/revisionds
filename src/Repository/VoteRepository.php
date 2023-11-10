@@ -71,7 +71,7 @@ FROM App\Entity\Vote v JOIN v.joueur j WHERE j.id = :id")
             ->setParameter ( 'id', $id);
         return $query->getSingleScalarResult();
     }
-    public function getVoteJoueur ($id) : array {
+    public function getVoteJoueur ($id) {
         return $this->createQueryBuilder('v')
             ->join('v.joueur','j')
             ->where('j.id = :id')

@@ -1,9 +1,20 @@
-{% for jr  in j  %}
-    {% for vr  in v %}
-    <h1>jr.nom </h1>
-    <h1>vr.date</h1>
-    <h1>vr.noteVote</h1>
-    <h1>jr.moyenneVote</h1>
+{% if v is empty   %}
 
-{% endfor %}
-{% endfor %}
+    <h1>mafamech joueur</h1>
+    {% else %}
+        <h1><bold>Nom: {{ j.nom}} </bold></h1>
+        <table border="1" >
+            <thead>
+            <th>Date vote</th>
+            <th>Note vote</th>
+            </thead>
+        {% for vt in v %}
+        <tr>
+            <td>Date de vote:{{ vt.date | date}}</td>
+
+    <td>Note du Vote{{ vt.noteVote}}</td>
+        </tr>
+        {% endfor %}
+            <h2>Moyenne du vote {{j.moyenneVote}}</h2>
+        </table>
+{% endif %}

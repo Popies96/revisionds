@@ -39,13 +39,14 @@ class JoueurController extends AbstractController
             $nbrVote = $vote->getNoteVote();
 
             $em->persist($vote);
-
+            $em->flush();
             $joueurVote->setMoyenneVote($vt->getSommeVotebyJoueur($joueurVote->getId()));
             $em->flush();
         }
 
         return $this->render('joueur/list.html.twig', [
             'j' => $jr->FindBy ((array ()), array ('nom' => 'ASC')),
+
             'f' => $form->createView()
         ]);
     }
@@ -54,8 +55,10 @@ class JoueurController extends AbstractController
      */
     public function detail($id , VoteRepository $vt , JoueurRepository $jr ): Response
     {
-        $vr = $vt->getSommeVotebyJoueur($id);
+        $vr = $vt->getVoteJoueur($id);
 $em = $jr->find($id);
+
+
 
 
         return $this->render('vote/detail.html.twig', [
